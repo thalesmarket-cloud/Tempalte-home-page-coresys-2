@@ -65,18 +65,9 @@ const Header = () => {
 
   return (
     <>
-      {/* Top Banner - Adapted to Light Blue */}
-      <div className="bg-primary text-navy py-2 px-6 text-center text-sm font-bold relative z-[60]">
-        Vous souhaitez participer à nos prochains évènements ? 
-        <a href="#" className="ml-2 underline font-black">Rendez-vous sur Coresys'Agenda !</a>
-        <button className="absolute right-4 top-1/2 -translate-y-1/2 opacity-70 hover:opacity-100">
-          <X size={16} />
-        </button>
-      </div>
-
       <header 
-        className={`fixed top-[40px] left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-transparent py-4'
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-transparent py-6'
         }`}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
@@ -153,64 +144,86 @@ const Header = () => {
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-white pt-24 lg:pt-32">
-      {/* Subtle Professional Background */}
-      <div className="absolute inset-0 z-0 opacity-30">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-white pt-24">
+      {/* Background Graphic Element */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-0 w-2/3 h-full opacity-10">
+           <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+             <path d="M100 0 L100 100 L0 100 Z" fill="url(#grad1)" />
+             <defs>
+               <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                 <stop offset="0%" style={{stopColor:'#6eafeb', stopOpacity:0.5}} />
+                 <stop offset="100%" style={{stopColor:'#001a5e', stopOpacity:1}} />
+               </linearGradient>
+             </defs>
+           </svg>
+        </div>
         <img 
           src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=2000" 
-          alt="Clean Professional Workspace" 
-          className="w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-20"
+          alt="Professional environment"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-white via-white/90 to-transparent" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl">
-          {/* Version Badge */}
+          {/* Status Badge */}
           <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center space-x-3 px-5 py-2 bg-primary/10 rounded-full mb-10 border border-primary/10"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center space-x-2 px-4 py-2 bg-primary/10 rounded-full mb-8 border border-primary/20"
           >
             <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-            <span className="text-[10px] lg:text-xs font-black text-primary uppercase tracking-[0.15em]">Nouvelle version 2025 disponible</span>
+            <span className="text-[10px] lg:text-xs font-black text-primary uppercase tracking-widest">Nouvelle version 2025 disponible</span>
           </motion.div>
 
-          {/* Headline - Exact content and style from screenshot */}
+          {/* Main Title */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h1 className="text-6xl lg:text-[100px] font-black text-navy leading-[1] tracking-tighter mb-10">
+            <h1 className="text-6xl lg:text-[110px] font-black text-navy leading-[0.95] tracking-tighter mb-10">
               Coresys – <span className="text-primary italic">Le Futur</span> <br />
               de la Gestion ERP
             </h1>
           </motion.div>
 
-          {/* Description - Exact content requested */}
+          {/* Subtext */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-2xl"
           >
             <p className="text-navy/60 text-xl lg:text-2xl mb-12 leading-relaxed font-medium">
               Une solution ERP puissante et évolutive pour piloter la performance et accélérer la transformation digitale de votre entreprise au Maroc.
             </p>
             
-            {/* CTA Buttons Row - Exact content requested */}
+            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center gap-5">
               <button className="w-full sm:w-auto px-12 py-5 bg-navy text-white rounded-full font-black text-lg transition-all shadow-2xl shadow-navy/20 hover:shadow-navy/40 hover:-translate-y-1 flex items-center justify-center group">
                 Demander une démo
-                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" size={22} />
+                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" size={24} />
               </button>
-              <button className="w-full sm:w-auto px-12 py-5 bg-white text-navy border border-navy/5 rounded-full font-black text-lg transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 flex items-center justify-center">
+              <button className="w-full sm:w-auto px-12 py-5 bg-white text-navy border border-navy/10 rounded-full font-black text-lg transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 flex items-center justify-center">
                 Découvrir la solution
               </button>
             </div>
           </motion.div>
         </div>
+      </div>
+
+      {/* Subtle indicator for scroll */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden lg:block opacity-20">
+        <motion.div 
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="w-6 h-10 border-2 border-navy rounded-full flex justify-center p-1"
+        >
+          <div className="w-1 h-2 bg-navy rounded-full" />
+        </motion.div>
       </div>
     </section>
   );
