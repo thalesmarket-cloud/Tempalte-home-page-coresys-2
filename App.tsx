@@ -112,7 +112,16 @@ const Header = () => {
 const Hero = () => {
   return (
     <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-40 hero-gradient overflow-hidden">
-      <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+      {/* Soft Background Image Overlay */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.06]">
+        <img 
+          src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000" 
+          alt="Background Texture"
+          className="w-full h-full object-cover grayscale"
+        />
+      </div>
+
+      <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
