@@ -150,9 +150,9 @@ const Hero = () => {
         >
           <div className="relative z-10 glass-card p-4 rounded-2xl shadow-2xl">
             <img 
-              src="https://images.unsplash.com/photo-1551288049-bbdaef866d01?auto=format&fit=crop&q=80&w=1200" 
+              src="https://www.cegid.com/fr/wp-content/uploads/sites/7/2022/12/vignette-cegid-xrp-flex-1.png" 
               alt="Coresys Dashboard Preview" 
-              className="rounded-xl w-full h-auto shadow-inner"
+              className="rounded-xl w-full h-auto shadow-inner bg-white"
             />
           </div>
           {/* Floating elements for futuristic feel */}
@@ -342,8 +342,8 @@ const DashboardPreview = () => {
             </div>
             <motion.div style={{ y }} className="lg:w-1/2 flex justify-center">
               <img 
-                src="https://images.unsplash.com/photo-1551288049-bbdaef866d01?auto=format&fit=crop&q=80&w=1200" 
-                className="rounded-2xl shadow-2xl w-full rotate-2" 
+                src="https://www.cegid.com/fr/wp-content/uploads/sites/7/2022/12/vignette-cegid-xrp-flex-1.png" 
+                className="rounded-2xl shadow-2xl w-full rotate-2 bg-white" 
                 alt="Dashboard detail" 
               />
             </motion.div>
