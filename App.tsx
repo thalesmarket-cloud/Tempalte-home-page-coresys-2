@@ -8,12 +8,12 @@ import {
   ArrowRight,
   MousePointer2,
   CheckCircle2,
-  // Fix: Added missing BarChart3 import
   BarChart3,
   Linkedin,
   Twitter,
   Facebook,
-  Globe
+  Quote,
+  Calendar
 } from 'lucide-react';
 import { 
   NAV_ITEMS, 
@@ -21,7 +21,9 @@ import {
   VALUE_PROPS, 
   FEATURES, 
   INDUSTRIES, 
-  KPIS 
+  KPIS,
+  TESTIMONIALS,
+  BLOG_POSTS
 } from './constants';
 
 // --- Sub-components ---
@@ -155,7 +157,6 @@ const Hero = () => {
               className="rounded-xl w-full h-auto shadow-inner bg-white"
             />
           </div>
-          {/* Floating elements for futuristic feel */}
           <motion.div 
             animate={{ y: [0, -20, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -279,9 +280,9 @@ const WhyCoresys = () => {
         <div className="relative">
           <div className="aspect-square bg-white rounded-[40px] shadow-2xl p-4 overflow-hidden">
              <img 
-               src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200" 
+               src="https://www.cegid.com/fr/wp-content/uploads/sites/7/2022/12/capture-cegid-xrp-flex-directeur-commercial.png" 
                className="w-full h-full object-cover rounded-[30px]" 
-               alt="Team collaborating"
+               alt="Cegid XRP Flex Pilotage Commercial"
              />
           </div>
           <div className="absolute -bottom-10 -left-10 bg-navy text-white p-8 rounded-3xl shadow-2xl max-w-xs">
@@ -371,6 +372,89 @@ const KPIs = () => {
               <p className="text-5xl lg:text-7xl font-black mb-2 tracking-tight">{kpi.value}{kpi.suffix.includes('%') ? '%' : ''}</p>
               <p className="text-sm lg:text-base font-bold uppercase tracking-widest opacity-80">{kpi.label}</p>
               {!kpi.suffix.includes('%') && <p className="text-xs mt-1 font-medium">{kpi.suffix}</p>}
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Testimonials = () => {
+  return (
+    <section id="testimonials" className="py-24 bg-gray-light">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl lg:text-5xl font-bold text-navy mb-6">Ce qu'en disent nos clients</h2>
+          <p className="text-lg text-navy/60 max-w-2xl mx-auto">Découvrez comment Coresys transforme le quotidien des entreprises leaders dans leur secteur.</p>
+        </div>
+        <div className="grid lg:grid-cols-3 gap-8">
+          {TESTIMONIALS.map((t, idx) => (
+            <motion.div
+              key={t.id}
+              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className="bg-white p-8 rounded-[32px] shadow-xl shadow-navy/5 border border-white relative overflow-hidden group"
+            >
+              <Quote className="absolute -top-4 -right-4 w-24 h-24 text-primary/5 group-hover:text-primary/10 transition-colors" />
+              <p className="text-navy/70 leading-relaxed mb-8 relative z-10 italic">"{t.content}"</p>
+              <div className="flex items-center space-x-4">
+                <img src={t.avatar} alt={t.name} className="w-12 h-12 rounded-full object-cover" />
+                <div>
+                  <h4 className="font-bold text-navy">{t.name}</h4>
+                  <p className="text-sm text-navy/50">{t.role}, {t.company}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Blog = () => {
+  return (
+    <section id="resources" className="py-24 bg-white">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
+          <div className="max-w-2xl">
+            <h2 className="text-3xl lg:text-5xl font-bold text-navy mb-6">Actualités & Insights</h2>
+            <p className="text-lg text-navy/60">Restez à la pointe des tendances ERP, de la finance et de la transformation digitale.</p>
+          </div>
+          <button className="text-primary font-bold flex items-center hover:underline group">
+            Tout le blog <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
+        <div className="grid md:grid-cols-3 gap-8">
+          {BLOG_POSTS.map((post, idx) => (
+            <motion.div
+              key={post.id}
+              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className="group cursor-pointer"
+            >
+              <div className="relative aspect-[16/10] rounded-3xl overflow-hidden mb-6">
+                <img 
+                  src={post.image} 
+                  alt={post.title} 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                />
+                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-full text-xs font-bold text-primary uppercase tracking-wider">
+                  {post.category}
+                </div>
+              </div>
+              <div className="flex items-center space-x-3 text-sm text-navy/40 mb-3">
+                <Calendar size={16} />
+                <span>{post.date}</span>
+              </div>
+              <h3 className="text-xl font-bold text-navy group-hover:text-primary transition-colors leading-snug">
+                {post.title}
+              </h3>
             </motion.div>
           ))}
         </div>
@@ -500,6 +584,8 @@ const App: React.FC = () => {
         <DashboardPreview />
         <KPIs />
         <FinalCTA />
+        <Testimonials />
+        <Blog />
       </main>
       <Footer />
     </div>

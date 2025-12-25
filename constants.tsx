@@ -15,9 +15,9 @@ import {
   Award,
   Cpu
 } from 'lucide-react';
-import { NavItem, Feature, ValueProp, Industry, KPI } from './types';
+import { NavItem, Feature, ValueProp, Industry, KPI, Testimonial, BlogPost } from './types';
 
-export const LOGO_URL = "https://i.ibb.co/h1d8RF88/image.png"; // Fixed potential invalid character in link
+export const LOGO_URL = "https://i.ibb.co/h1d8RF88/image.png";
 
 export const NAV_ITEMS: NavItem[] = [
   { label: 'Produit', href: '#product' },
@@ -104,4 +104,55 @@ export const KPIS: KPI[] = [
   { label: 'Gain de productivité', value: '50', suffix: '%' },
   { label: 'Temps de déploiement', value: '2', suffix: 'x plus rapide' },
   { label: 'Satisfaction client', value: '98', suffix: '%' },
+];
+
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    id: '1',
+    name: 'Jean-Marc Dubois',
+    role: 'Directeur Financier',
+    company: 'Logistique France',
+    content: "L'implémentation de Coresys a radicalement changé notre vision de la rentabilité. La précision des données en temps réel est un atout majeur pour nos décisions stratégiques.",
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200',
+  },
+  {
+    id: '2',
+    name: 'Sophie Laurent',
+    role: 'Responsable Supply Chain',
+    company: 'Manufacture Moderne',
+    content: "Cegid XRP Flex nous permet d'anticiper les ruptures de stock bien avant qu'elles ne surviennent. L'interface Coresys est d'une fluidité exemplaire pour nos équipes.",
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200',
+  },
+  {
+    id: '3',
+    name: 'Thomas Morel',
+    role: 'CEO',
+    company: 'TechSolutions SA',
+    content: "Nous cherchions une solution capable d'accompagner notre hyper-croissance. Coresys est le seul ERP qui a su allier puissance technique et simplicité d'utilisation.",
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200',
+  }
+];
+
+export const BLOG_POSTS: BlogPost[] = [
+  {
+    id: '1',
+    title: '5 étapes pour réussir sa transformation digitale en 2025',
+    category: 'Stratégie',
+    date: '12 Fév 2025',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
+  },
+  {
+    id: '2',
+    title: 'IA Générative et ERP : Comment automatiser vos rapports financiers',
+    category: 'Innovation',
+    date: '08 Fév 2025',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800',
+  },
+  {
+    id: '3',
+    title: 'Guide complet : Choisir un ERP Cloud vs On-premise',
+    category: 'Guide',
+    date: '05 Fév 2025',
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800',
+  }
 ];

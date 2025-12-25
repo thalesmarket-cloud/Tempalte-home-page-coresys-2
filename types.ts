@@ -30,3 +30,20 @@ export interface KPI {
   value: string;
   suffix: string;
 }
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  role: string;
+  company: string;
+  content: string;
+  avatar: string;
+}
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  category: string;
+  date: string;
+  image: string;
+}
