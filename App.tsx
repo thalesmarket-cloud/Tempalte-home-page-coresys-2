@@ -70,7 +70,7 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <a href="/" className="flex items-center space-x-3">
+        <a href="/" className="flex items-center space-x-3 shrink-0">
           <img src={LOGO_URL} alt="Coresys Logo" className="h-10 lg:h-12 w-auto" />
           <div className="flex flex-col -space-y-1 hidden sm:flex">
             <span className="text-xl font-black tracking-tight uppercase text-navy">CORESYS</span>
@@ -78,23 +78,23 @@ const Header = () => {
           </div>
         </a>
 
-        {/* Desktop Menu */}
-        <nav className="hidden xl:flex items-center space-x-8">
+        {/* Desktop Menu - ml-auto added to push menu to the right and avoid logo overlap */}
+        <nav className="hidden xl:flex items-center space-x-8 ml-auto">
           <div className="flex items-center space-x-8 mr-8 border-r border-navy/5 pr-8">
             {NAV_ITEMS.map((item) => (
               <a 
                 key={item.label} 
                 href={item.href} 
-                className="text-xs font-bold text-navy/70 hover:text-primary transition-colors uppercase tracking-widest"
+                className="text-xs font-bold text-navy/70 hover:text-primary transition-colors uppercase tracking-widest whitespace-nowrap"
               >
                 {item.label}
               </a>
             ))}
           </div>
           
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 shrink-0">
             <a href="#" className="text-xs font-bold text-navy/60 hover:text-navy transition-colors uppercase tracking-widest">Support</a>
-            <a href="#" className="px-6 py-2.5 bg-navy text-white hover:bg-navy-light rounded-full text-xs font-black transition-all shadow-lg shadow-navy/10">
+            <a href="#" className="px-6 py-2.5 bg-navy text-white hover:bg-navy-light rounded-full text-xs font-black transition-all shadow-lg shadow-navy/10 whitespace-nowrap">
               Demander une démo
             </a>
           </div>
@@ -102,7 +102,7 @@ const Header = () => {
 
         {/* Mobile Burger */}
         <button 
-          className="xl:hidden text-navy p-2"
+          className="xl:hidden text-navy p-2 ml-4"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -150,8 +150,8 @@ const Hero = () => {
           alt="Modern Business Environment" 
           className="w-full h-full object-cover"
         />
-        {/* Soft white gradient overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent lg:via-white/70" />
+        {/* Soft white gradient overlay for readability - optimized for left alignment */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-white/20 lg:via-white/75" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10 pt-20">
@@ -166,7 +166,7 @@ const Hero = () => {
             <span className="text-[10px] lg:text-xs font-black text-primary uppercase tracking-widest">Nouvelle version 2025</span>
           </motion.div>
 
-          {/* Headline - Perfectly aligned */}
+          {/* Headline - Perfectly aligned and structured */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
