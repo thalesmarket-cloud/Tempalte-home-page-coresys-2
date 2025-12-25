@@ -5,7 +5,7 @@ import {
   Menu, 
   X, 
   ChevronRight, 
-  ArrowRight,
+  ArrowUpRight,
   MousePointer2,
   CheckCircle2,
   BarChart3,
@@ -13,7 +13,10 @@ import {
   Twitter,
   Facebook,
   Quote,
-  Calendar
+  Calendar,
+  MessageCircle,
+  Accessibility,
+  Send
 } from 'lucide-react';
 import { 
   NAV_ITEMS, 
@@ -61,150 +64,153 @@ const Header = () => {
   }, []);
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'
-      }`}
-    >
-      <div className="container mx-auto px-6 flex items-center justify-between">
-        <a href="/" className="flex items-center space-x-2">
-          <img src={LOGO_URL} alt="Coresys Logo" className="h-10 w-auto" />
-          <div className="flex flex-col -space-y-1">
-            <span className="text-xl font-bold text-navy tracking-tight uppercase">CORESYS</span>
-          </div>
-        </a>
-
-        {/* Desktop Menu */}
-        <nav className="hidden lg:flex items-center space-x-8">
-          {NAV_ITEMS.map((item) => (
-            <a 
-              key={item.label} 
-              href={item.href} 
-              className="text-sm font-medium text-navy/70 hover:text-primary transition-colors"
-            >
-              {item.label}
-            </a>
-          ))}
-          <button className="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
-            Démo Gratuite
-          </button>
-        </nav>
-
-        {/* Mobile Burger */}
-        <button 
-          className="lg:hidden text-navy"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
+    <>
+      {/* Top Banner - Adapted to Light Blue */}
+      <div className="bg-primary text-navy py-2 px-6 text-center text-sm font-bold relative z-[60]">
+        Vous souhaitez participer à nos prochains évènements ? 
+        <a href="#" className="ml-2 underline font-black">Rendez-vous sur Coresys'Agenda !</a>
+        <button className="absolute right-4 top-1/2 -translate-y-1/2 opacity-70 hover:opacity-100">
+          <X size={16} />
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 bg-white shadow-xl lg:hidden border-t"
-          >
-            <div className="flex flex-col p-6 space-y-4">
+      <header 
+        className={`fixed top-[40px] left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-transparent py-4'
+        }`}
+      >
+        <div className="container mx-auto px-6 flex items-center justify-between">
+          <a href="/" className="flex items-center space-x-3">
+            <img src={LOGO_URL} alt="Coresys Logo" className="h-12 w-auto" />
+            <div className="flex flex-col -space-y-1 hidden sm:flex">
+              <span className={`text-xl font-black tracking-tight uppercase text-navy`}>CORESYS</span>
+              <span className={`text-[8px] tracking-widest font-bold text-navy/50`}>BY CEGID</span>
+            </div>
+          </a>
+
+          {/* Desktop Menu */}
+          <nav className="hidden xl:flex items-center space-x-6">
+            <div className="flex items-center space-x-6 mr-8 border-r border-navy/10 pr-8">
               {NAV_ITEMS.map((item) => (
                 <a 
                   key={item.label} 
                   href={item.href} 
-                  className="text-lg font-medium text-navy py-2 border-b border-gray-100"
-                  onClick={() => setIsOpen(false)}
+                  className="text-xs font-bold text-navy/80 hover:text-primary transition-colors uppercase tracking-wider"
                 >
                   {item.label}
                 </a>
               ))}
-              <button className="w-full bg-primary text-white py-4 rounded-xl text-lg font-bold">
-                Demander une démo
-              </button>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
+            
+            <div className="flex items-center space-x-3">
+              <a href="#" className="px-5 py-2 bg-navy/5 hover:bg-navy/10 text-navy rounded-full text-xs font-bold transition-all border border-navy/10">Blog</a>
+              <a href="#" className="px-5 py-2 bg-navy/5 hover:bg-navy/10 text-navy rounded-full text-xs font-bold transition-all border border-navy/10">Ressources</a>
+              <a href="#" className="px-5 py-2 bg-primary/20 hover:bg-primary/30 text-navy rounded-full text-xs font-bold transition-all border border-primary/20">Support</a>
+              <a href="#" className="px-5 py-2 bg-navy text-white hover:bg-navy/90 rounded-full text-xs font-black transition-all shadow-lg shadow-navy/20">Contact</a>
+            </div>
+          </nav>
+
+          {/* Mobile Burger */}
+          <button 
+            className="xl:hidden text-navy"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
+
+        {/* Mobile Menu Overlay */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="absolute top-full left-0 right-0 bg-white shadow-xl xl:hidden overflow-hidden border-t border-navy/10"
+            >
+              <div className="flex flex-col p-8 space-y-6">
+                {NAV_ITEMS.map((item) => (
+                  <a 
+                    key={item.label} 
+                    href={item.href} 
+                    className="text-xl font-bold text-navy"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+                <div className="grid grid-cols-1 gap-4 pt-6 border-t border-navy/10">
+                  <button className="bg-navy text-white py-4 rounded-full font-black">Contactez-nous</button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
+    </>
   );
 };
 
 const Hero = () => {
   return (
-    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-40 hero-gradient overflow-hidden">
-      {/* Soft Background Image Overlay */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.06]">
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-white pt-24 lg:pt-32">
+      {/* Subtle Professional Background */}
+      <div className="absolute inset-0 z-0 opacity-30">
         <img 
-          src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000" 
-          alt="Background Texture"
-          className="w-full h-full object-cover grayscale"
+          src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=2000" 
+          alt="Clean Professional Workspace" 
+          className="w-full h-full object-cover object-center"
         />
+        <div className="absolute inset-0 bg-gradient-to-br from-white via-white/90 to-transparent" />
       </div>
 
-      <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="z-10"
-        >
-          <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-bold mb-6">
-            <span className="relative flex h-2 w-2 mr-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-            </span>
-            NOUVELLE VERSION 2025 DISPONIBLE
-          </div>
-          <h1 className="text-5xl lg:text-7xl font-extrabold text-navy leading-[1.1] mb-6">
-            Coresys – <span className="text-primary italic">Le Futur</span> de la Gestion ERP
-          </h1>
-          <p className="text-lg lg:text-xl text-navy/60 mb-10 max-w-xl leading-relaxed">
-            Une solution ERP puissante et évolutive pour piloter la performance 
-            et accélérer la transformation digitale de votre entreprise au Maroc.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <button className="px-8 py-4 bg-navy text-white rounded-full font-bold text-lg hover:bg-navy-light transition-all flex items-center justify-center group shadow-xl shadow-navy/20">
-              Demander une démo
-              <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="px-8 py-4 bg-white text-navy border border-navy/10 rounded-full font-bold text-lg hover:bg-gray-50 transition-all flex items-center justify-center">
-              Découvrir la solution
-            </button>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-          className="relative"
-        >
-          <div className="relative z-10 glass-card p-4 rounded-2xl shadow-2xl">
-            <img 
-              src="https://www.cegid.com/fr/wp-content/uploads/sites/7/2022/12/vignette-cegid-xrp-flex-1.png" 
-              alt="Coresys Dashboard Preview" 
-              className="rounded-xl w-full h-auto shadow-inner bg-white"
-            />
-          </div>
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-4xl">
+          {/* Version Badge */}
           <motion.div 
-            animate={{ y: [0, -20, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-10 -right-10 hidden xl:block z-20"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center space-x-3 px-5 py-2 bg-primary/10 rounded-full mb-10 border border-primary/10"
           >
-            <div className="bg-white p-6 rounded-2xl shadow-xl border border-primary/10 flex items-center space-x-4">
-              <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
-                <BarChart3 className="text-primary" />
-              </div>
-              <div>
-                <p className="text-xs text-navy/50 font-bold uppercase">ROI Mensuel</p>
-                <p className="text-2xl font-black text-navy">+24.8%</p>
-              </div>
+            <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+            <span className="text-[10px] lg:text-xs font-black text-primary uppercase tracking-[0.15em]">Nouvelle version 2025 disponible</span>
+          </motion.div>
+
+          {/* Headline - Exact content and style from screenshot */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
+            <h1 className="text-6xl lg:text-[100px] font-black text-navy leading-[1] tracking-tighter mb-10">
+              Coresys – <span className="text-primary italic">Le Futur</span> <br />
+              de la Gestion ERP
+            </h1>
+          </motion.div>
+
+          {/* Description - Exact content requested */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
+            className="max-w-2xl"
+          >
+            <p className="text-navy/60 text-xl lg:text-2xl mb-12 leading-relaxed font-medium">
+              Une solution ERP puissante et évolutive pour piloter la performance et accélérer la transformation digitale de votre entreprise au Maroc.
+            </p>
+            
+            {/* CTA Buttons Row - Exact content requested */}
+            <div className="flex flex-col sm:flex-row items-center gap-5">
+              <button className="w-full sm:w-auto px-12 py-5 bg-navy text-white rounded-full font-black text-lg transition-all shadow-2xl shadow-navy/20 hover:shadow-navy/40 hover:-translate-y-1 flex items-center justify-center group">
+                Demander une démo
+                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" size={22} />
+              </button>
+              <button className="w-full sm:w-auto px-12 py-5 bg-white text-navy border border-navy/5 rounded-full font-black text-lg transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 flex items-center justify-center">
+                Découvrir la solution
+              </button>
             </div>
           </motion.div>
-          
-          <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-primary/5 rounded-full blur-[100px]" />
-        </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -252,7 +258,7 @@ const Features = () => {
             <p className="text-white/60 text-lg">Choisissez les modules dont vous avez besoin. Coresys s'adapte à la structure de votre organisation.</p>
           </div>
           <button className="text-primary font-bold flex items-center hover:underline group">
-            Voir tout le catalogue <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
+            Voir tout le catalogue <ChevronRight className="ml-2 group-hover:translate-x-2 transition-transform" />
           </button>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -296,7 +302,7 @@ const WhyCoresys = () => {
               { title: "Innovation Continue", desc: "Profitez des dernières avancées en IA générative pour automatiser vos tâches quotidiennes au Maroc." }
             ].map((item, i) => (
               <div key={i} className="flex items-start space-x-6">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white mt-1">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-navy mt-1">
                   <CheckCircle2 size={20} />
                 </div>
                 <div>
@@ -316,7 +322,7 @@ const WhyCoresys = () => {
              />
           </div>
           <div className="absolute -bottom-10 -left-10 bg-navy text-white p-8 rounded-3xl shadow-2xl max-w-xs">
-            <p className="text-3xl font-black mb-2">20+</p>
+            <p className="text-3xl font-black mb-2 text-primary">20+</p>
             <p className="text-sm font-medium opacity-70">années d'expertise au service du tissu économique national.</p>
           </div>
         </div>
@@ -365,8 +371,8 @@ const DashboardPreview = () => {
                 pour vous permettre de vous concentrer sur ce qui compte vraiment : la décision stratégique.
               </p>
               <div className="flex items-center space-x-4">
-                <button className="p-5 bg-primary rounded-full text-white shadow-xl shadow-primary/40 hover:scale-105 transition-transform">
-                  <MousePointer2 fill="white" />
+                <button className="p-5 bg-primary rounded-full text-navy shadow-xl shadow-primary/40 hover:scale-105 transition-transform">
+                  <MousePointer2 fill="#001a5e" />
                 </button>
                 <span className="text-white font-bold">Essayer l'interface interactive</span>
               </div>
@@ -398,7 +404,7 @@ const KPIs = () => {
               initial={{ opacity: 0, y: 40 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="text-center text-white"
+              className="text-center text-navy"
             >
               <p className="text-5xl lg:text-8xl font-black mb-4 tracking-tighter flex items-center justify-center">
                 <AnimatedCounter value={kpi.value} />
@@ -461,7 +467,7 @@ const Blog = () => {
             <p className="text-lg text-navy/60">Restez à la pointe des tendances ERP et de la transformation digitale au Maroc.</p>
           </div>
           <button className="text-primary font-bold flex items-center hover:underline group">
-            Tout le blog <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+            Tout le blog <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
         <div className="grid md:grid-cols-3 gap-8">
@@ -480,7 +486,7 @@ const Blog = () => {
                   alt={post.title} 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                 />
-                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-full text-xs font-bold text-primary uppercase tracking-wider">
+                <div className="absolute top-4 left-4 bg-navy text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
                   {post.category}
                 </div>
               </div>
@@ -503,7 +509,7 @@ const FinalCTA = () => {
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-6">
-        <div className="bg-navy-light rounded-[50px] p-12 lg:p-24 text-center relative overflow-hidden">
+        <div className="bg-navy rounded-[50px] p-12 lg:p-24 text-center relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
             <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
               <defs>
@@ -518,7 +524,7 @@ const FinalCTA = () => {
             <h2 className="text-4xl lg:text-7xl font-black text-white mb-8">Transformez votre vision en performance durable</h2>
             <p className="text-xl text-white/70 mb-12">Nos experts basés au Maroc sont prêts à vous accompagner dans votre projet de transformation.</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <button className="px-10 py-5 bg-primary text-white rounded-full font-bold text-xl hover:shadow-2xl hover:shadow-primary/40 transition-all">
+              <button className="px-10 py-5 bg-primary text-navy rounded-full font-black text-xl hover:shadow-2xl hover:shadow-primary/40 transition-all">
                 Parler à un expert
               </button>
               <button className="px-10 py-5 bg-white/10 text-white border border-white/20 rounded-full font-bold text-xl hover:bg-white/20 transition-all">
@@ -538,8 +544,8 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           <div>
-            <div className="flex items-center space-x-2 mb-8">
-              <img src={LOGO_URL} alt="Coresys Logo" className="h-10 w-auto invert brightness-0" />
+            <div className="flex items-center space-x-3 mb-8">
+              <img src={LOGO_URL} alt="Coresys Logo" className="h-14 w-auto" />
               <div className="flex flex-col -space-y-1">
                 <span className="text-xl font-bold tracking-tight uppercase">CORESYS</span>
               </div>
@@ -548,13 +554,13 @@ const Footer = () => {
               Coresys est la plateforme ERP de référence pour les entreprises en quête d'innovation et de performance au Maroc.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors">
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-navy transition-colors">
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors">
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-navy transition-colors">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors">
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-navy transition-colors">
                 <Facebook size={20} />
               </a>
             </div>
@@ -608,7 +614,7 @@ const Footer = () => {
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen selection:bg-primary selection:text-white">
+    <div className="min-h-screen selection:bg-primary selection:text-navy">
       <Header />
       <main>
         <Hero />

@@ -8,16 +8,17 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
             primary: '#6eafeb',
+            accent: '#6eafeb', // Light Blue from the new logo
             secondary: '#ffffff',
-            navy: '#0f172a',
-            'navy-light': '#1e293b',
+            navy: '#001a5e', // Deep Blue from the new logo background
+            'navy-light': '#002585',
             'gray-light': '#f8fafc'
           },
           fontFamily: {
@@ -33,14 +34,13 @@
       scroll-behavior: smooth;
     }
     .glass-card {
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    .hero-gradient {
-      background: radial-gradient(circle at top right, rgba(110, 175, 235, 0.15), transparent),
-                  radial-gradient(circle at bottom left, rgba(15, 23, 42, 0.05), transparent);
+    .hero-overlay {
+      background: linear-gradient(to right, rgba(0,26,94,0.85) 0%, rgba(0,26,94,0.4) 50%, rgba(0,26,94,0.7) 100%);
     }
   </style>
   <script type="importmap">
