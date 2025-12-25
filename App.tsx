@@ -64,128 +64,116 @@ const Header = () => {
   }, []);
 
   return (
-    <>
-      <header 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-transparent py-6'
-        }`}
-      >
-        <div className="container mx-auto px-6 flex items-center justify-between">
-          <a href="/" className="flex items-center space-x-3">
-            <img src={LOGO_URL} alt="Coresys Logo" className="h-12 w-auto" />
-            <div className="flex flex-col -space-y-1 hidden sm:flex">
-              <span className={`text-xl font-black tracking-tight uppercase text-navy`}>CORESYS</span>
-              <span className={`text-[8px] tracking-widest font-bold text-navy/50`}>BY CEGID</span>
-            </div>
-          </a>
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-6'
+      }`}
+    >
+      <div className="container mx-auto px-6 flex items-center justify-between">
+        <a href="/" className="flex items-center space-x-3">
+          <img src={LOGO_URL} alt="Coresys Logo" className="h-10 lg:h-12 w-auto" />
+          <div className="flex flex-col -space-y-1 hidden sm:flex">
+            <span className="text-xl font-black tracking-tight uppercase text-navy">CORESYS</span>
+            <span className="text-[8px] tracking-widest font-bold text-navy/40">BY CEGID</span>
+          </div>
+        </a>
 
-          {/* Desktop Menu */}
-          <nav className="hidden xl:flex items-center space-x-6">
-            <div className="flex items-center space-x-6 mr-8 border-r border-navy/10 pr-8">
+        {/* Desktop Menu */}
+        <nav className="hidden xl:flex items-center space-x-8">
+          <div className="flex items-center space-x-8 mr-8 border-r border-navy/5 pr-8">
+            {NAV_ITEMS.map((item) => (
+              <a 
+                key={item.label} 
+                href={item.href} 
+                className="text-xs font-bold text-navy/70 hover:text-primary transition-colors uppercase tracking-widest"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+          
+          <div className="flex items-center space-x-4">
+            <a href="#" className="text-xs font-bold text-navy/60 hover:text-navy transition-colors uppercase tracking-widest">Support</a>
+            <a href="#" className="px-6 py-2.5 bg-navy text-white hover:bg-navy-light rounded-full text-xs font-black transition-all shadow-lg shadow-navy/10">
+              Demander une démo
+            </a>
+          </div>
+        </nav>
+
+        {/* Mobile Burger */}
+        <button 
+          className="xl:hidden text-navy p-2"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="absolute top-full left-0 right-0 bg-white shadow-2xl xl:hidden border-t border-navy/5"
+          >
+            <div className="flex flex-col p-8 space-y-6">
               {NAV_ITEMS.map((item) => (
                 <a 
                   key={item.label} 
                   href={item.href} 
-                  className="text-xs font-bold text-navy/80 hover:text-primary transition-colors uppercase tracking-wider"
+                  className="text-lg font-bold text-navy"
+                  onClick={() => setIsOpen(false)}
                 >
                   {item.label}
                 </a>
               ))}
+              <button className="bg-navy text-white py-4 rounded-full font-black text-sm uppercase tracking-widest">
+                Contactez-nous
+              </button>
             </div>
-            
-            <div className="flex items-center space-x-3">
-              <a href="#" className="px-5 py-2 bg-navy/5 hover:bg-navy/10 text-navy rounded-full text-xs font-bold transition-all border border-navy/10">Blog</a>
-              <a href="#" className="px-5 py-2 bg-navy/5 hover:bg-navy/10 text-navy rounded-full text-xs font-bold transition-all border border-navy/10">Ressources</a>
-              <a href="#" className="px-5 py-2 bg-primary/20 hover:bg-primary/30 text-navy rounded-full text-xs font-bold transition-all border border-primary/20">Support</a>
-              <a href="#" className="px-5 py-2 bg-navy text-white hover:bg-navy/90 rounded-full text-xs font-black transition-all shadow-lg shadow-navy/20">Contact</a>
-            </div>
-          </nav>
-
-          {/* Mobile Burger */}
-          <button 
-            className="xl:hidden text-navy"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
-
-        {/* Mobile Menu Overlay */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="absolute top-full left-0 right-0 bg-white shadow-xl xl:hidden overflow-hidden border-t border-navy/10"
-            >
-              <div className="flex flex-col p-8 space-y-6">
-                {NAV_ITEMS.map((item) => (
-                  <a 
-                    key={item.label} 
-                    href={item.href} 
-                    className="text-xl font-bold text-navy"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.label}
-                  </a>
-                ))}
-                <div className="grid grid-cols-1 gap-4 pt-6 border-t border-navy/10">
-                  <button className="bg-navy text-white py-4 rounded-full font-black">Contactez-nous</button>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
-    </>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 };
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-white pt-24">
-      {/* Background Graphic Element */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-2/3 h-full opacity-10">
-           <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
-             <path d="M100 0 L100 100 L0 100 Z" fill="url(#grad1)" />
-             <defs>
-               <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                 <stop offset="0%" style={{stopColor:'#6eafeb', stopOpacity:0.5}} />
-                 <stop offset="100%" style={{stopColor:'#001a5e', stopOpacity:1}} />
-               </linearGradient>
-             </defs>
-           </svg>
-        </div>
+    <section className="relative min-h-screen flex items-center bg-white overflow-hidden">
+      {/* Background Image Container */}
+      <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=2000" 
-          className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-20"
-          alt="Professional environment"
+          src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=2000" 
+          alt="Modern Business Environment" 
+          className="w-full h-full object-cover"
         />
+        {/* Soft white gradient overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent lg:via-white/70" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 relative z-10 pt-20">
         <div className="max-w-4xl">
-          {/* Status Badge */}
+          {/* Version Badge */}
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center space-x-2 px-4 py-2 bg-primary/10 rounded-full mb-8 border border-primary/20"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center space-x-3 px-4 py-2 bg-primary/10 rounded-full mb-8 border border-primary/20"
           >
             <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-            <span className="text-[10px] lg:text-xs font-black text-primary uppercase tracking-widest">Nouvelle version 2025 disponible</span>
+            <span className="text-[10px] lg:text-xs font-black text-primary uppercase tracking-widest">Nouvelle version 2025</span>
           </motion.div>
 
-          {/* Main Title */}
+          {/* Headline - Perfectly aligned */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h1 className="text-6xl lg:text-[110px] font-black text-navy leading-[0.95] tracking-tighter mb-10">
-              Coresys – <span className="text-primary italic">Le Futur</span> <br />
+            <h1 className="text-5xl lg:text-[100px] font-black text-navy leading-[1.05] tracking-tight mb-8">
+              Coresys – <span className="text-primary italic font-medium">Le Futur</span> <br />
               de la Gestion ERP
             </h1>
           </motion.div>
@@ -201,7 +189,7 @@ const Hero = () => {
               Une solution ERP puissante et évolutive pour piloter la performance et accélérer la transformation digitale de votre entreprise au Maroc.
             </p>
             
-            {/* CTA Buttons */}
+            {/* CTA Group */}
             <div className="flex flex-col sm:flex-row items-center gap-5">
               <button className="w-full sm:w-auto px-12 py-5 bg-navy text-white rounded-full font-black text-lg transition-all shadow-2xl shadow-navy/20 hover:shadow-navy/40 hover:-translate-y-1 flex items-center justify-center group">
                 Demander une démo
@@ -214,24 +202,13 @@ const Hero = () => {
           </motion.div>
         </div>
       </div>
-
-      {/* Subtle indicator for scroll */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden lg:block opacity-20">
-        <motion.div 
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-navy rounded-full flex justify-center p-1"
-        >
-          <div className="w-1 h-2 bg-navy rounded-full" />
-        </motion.div>
-      </div>
     </section>
   );
 };
 
 const ValueProps = () => {
   return (
-    <section id="solutions" className="py-24 bg-white">
+    <section id="solutions" className="py-24 bg-white border-t border-navy/5">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl lg:text-5xl font-bold text-navy mb-6">Piliers de Performance</h2>
@@ -560,7 +537,7 @@ const Footer = () => {
             <div className="flex items-center space-x-3 mb-8">
               <img src={LOGO_URL} alt="Coresys Logo" className="h-14 w-auto" />
               <div className="flex flex-col -space-y-1">
-                <span className="text-xl font-bold tracking-tight uppercase">CORESYS</span>
+                <span className="text-xl font-bold tracking-tight uppercase text-white">CORESYS</span>
               </div>
             </div>
             <p className="text-white/40 leading-relaxed mb-8">
@@ -580,7 +557,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-8">Produit</h4>
+            <h4 className="text-lg font-bold mb-8 text-white">Produit</h4>
             <ul className="space-y-4 text-white/60">
               <li><a href="#" className="hover:text-primary transition-colors">Fonctionnalités</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">Roadmap 2025</a></li>
@@ -590,7 +567,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-8">Société</h4>
+            <h4 className="text-lg font-bold mb-8 text-white">Société</h4>
             <ul className="space-y-4 text-white/60">
               <li><a href="#" className="hover:text-primary transition-colors">À propos de Coresys</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">Carrières</a></li>
@@ -600,7 +577,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-8">Support</h4>
+            <h4 className="text-lg font-bold mb-8 text-white">Support</h4>
             <ul className="space-y-4 text-white/60">
               <li><a href="#" className="hover:text-primary transition-colors">Centre d'aide</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">Documentation technique</a></li>
