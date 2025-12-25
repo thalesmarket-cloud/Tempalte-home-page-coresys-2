@@ -13,7 +13,10 @@ import {
   Twitter,
   Facebook,
   Quote,
-  Calendar
+  Calendar,
+  MessageCircle,
+  Accessibility,
+  Send
 } from 'lucide-react';
 import { 
   NAV_ITEMS, 
@@ -132,80 +135,113 @@ const Header = () => {
 
 const Hero = () => {
   return (
-    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-40 hero-gradient overflow-hidden">
-      {/* Soft Background Image Overlay */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.06]">
+    <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-white">
+      {/* Background Image Container */}
+      <div className="absolute top-0 right-0 w-full lg:w-2/3 h-full z-0">
         <img 
-          src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000" 
-          alt="Background Texture"
-          className="w-full h-full object-cover grayscale"
+          src="https://images.unsplash.com/photo-1573161559521-4838bb18d601?auto=format&fit=crop&q=80&w=2000" 
+          alt="Modern Office" 
+          className="w-full h-full object-cover"
         />
+        <div className="absolute inset-0 bg-white/40 lg:bg-transparent lg:hero-gradient" />
       </div>
 
-      <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="z-10"
-        >
-          <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-bold mb-6">
-            <span className="relative flex h-2 w-2 mr-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-            </span>
-            NOUVELLE VERSION 2025 DISPONIBLE
-          </div>
-          <h1 className="text-5xl lg:text-7xl font-extrabold text-navy leading-[1.1] mb-6">
-            Coresys – <span className="text-primary italic">Le Futur</span> de la Gestion ERP
-          </h1>
-          <p className="text-lg lg:text-xl text-navy/60 mb-10 max-w-xl leading-relaxed">
-            Une solution ERP puissante et évolutive pour piloter la performance 
-            et accélérer la transformation digitale de votre entreprise au Maroc.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <button className="px-8 py-4 bg-navy text-white rounded-full font-bold text-lg hover:bg-navy-light transition-all flex items-center justify-center group shadow-xl shadow-navy/20">
-              Demander une démo
-              <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="px-8 py-4 bg-white text-navy border border-navy/10 rounded-full font-bold text-lg hover:bg-gray-50 transition-all flex items-center justify-center">
-              Découvrir la solution
-            </button>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-          className="relative"
-        >
-          <div className="relative z-10 glass-card p-4 rounded-2xl shadow-2xl">
-            <img 
-              src="https://www.cegid.com/fr/wp-content/uploads/sites/7/2022/12/vignette-cegid-xrp-flex-1.png" 
-              alt="Coresys Dashboard Preview" 
-              className="rounded-xl w-full h-auto shadow-inner bg-white"
-            />
-          </div>
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          {/* Left Content */}
           <motion.div 
-            animate={{ y: [0, -20, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-10 -right-10 hidden xl:block z-20"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="md:col-span-7 lg:col-span-6"
           >
-            <div className="bg-white p-6 rounded-2xl shadow-xl border border-primary/10 flex items-center space-x-4">
-              <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
-                <BarChart3 className="text-primary" />
-              </div>
-              <div>
-                <p className="text-xs text-navy/50 font-bold uppercase">ROI Mensuel</p>
-                <p className="text-2xl font-black text-navy">+24.8%</p>
-              </div>
+            <span className="inline-block text-accent font-bold uppercase tracking-widest text-sm mb-4">
+              Digitalisation & Performance
+            </span>
+            <h1 className="text-4xl lg:text-7xl font-extrabold text-navy leading-[1.1] mb-8">
+              Inscrivez-vous à la <br />
+              <span className="text-navy">Plateforme </span>
+              <span className="text-navy relative inline-block">
+                Moderne
+                <motion.span 
+                  initial={{ width: 0 }}
+                  animate={{ width: "100%" }}
+                  transition={{ delay: 0.8, duration: 1 }}
+                  className="absolute bottom-1 left-0 h-2 bg-primary/20 -z-10"
+                />
+              </span>
+              <br />
+              <span className="text-primary italic">Coresys</span>
+            </h1>
+            <p className="text-lg lg:text-xl text-navy/70 mb-10 max-w-lg leading-relaxed">
+              Avec Coresys, choisissez la mise en conformité <strong>simple et fiable</strong>. 
+              Pilotez votre entreprise avec une agilité sans précédent.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <button className="px-10 py-4 bg-accent text-white rounded-full font-bold text-lg hover:bg-accent/90 transition-all shadow-xl shadow-accent/20">
+                Être accompagné
+              </button>
             </div>
           </motion.div>
-          
-          <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-primary/5 rounded-full blur-[100px]" />
-        </motion.div>
+
+          {/* Right Floating Elements (Visible on LG) */}
+          <div className="hidden lg:block md:col-span-5 lg:col-span-6 h-full relative">
+            {/* Status Card */}
+            <motion.div
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute top-0 right-10 bg-white p-6 rounded-3xl shadow-2xl border border-gray-100 w-64 z-20"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white">
+                  <Send size={20} />
+                </div>
+                <span className="text-[10px] font-black uppercase text-navy/40">Statut: En cours</span>
+              </div>
+              <p className="text-sm font-bold text-navy mb-1 uppercase">Facture Électronique</p>
+              <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                <motion.div 
+                  initial={{ width: 0 }}
+                  animate={{ width: "75%" }}
+                  transition={{ delay: 1, duration: 1.5 }}
+                  className="h-full bg-blue-600"
+                />
+              </div>
+              <button className="mt-4 w-full py-2 bg-blue-600 text-white rounded-lg text-[10px] font-black uppercase tracking-wider">Envoyer</button>
+            </motion.div>
+
+            {/* Float Icons */}
+            <motion.div
+              animate={{ x: [0, 10, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute bottom-20 left-0 bg-accent p-4 rounded-2xl shadow-xl text-white z-20"
+            >
+              <CheckCircle2 size={32} />
+            </motion.div>
+
+            <motion.div
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute top-1/2 right-0 bg-primary p-4 rounded-full shadow-xl text-white z-20"
+            >
+              <Accessibility size={28} />
+            </motion.div>
+          </div>
+        </div>
       </div>
+
+      {/* Floating Help Widget */}
+      <motion.div 
+        initial={{ y: 100 }}
+        animate={{ y: 0 }}
+        transition={{ delay: 1.5, type: "spring" }}
+        className="fixed bottom-8 right-8 z-[100] flex items-center space-x-3 bg-white p-2 pr-6 rounded-full shadow-2xl border border-gray-100 cursor-pointer hover:scale-105 transition-transform"
+      >
+        <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white">
+          <MessageCircle size={24} />
+        </div>
+        <span className="text-sm font-bold text-navy">Besoin d'aide ?</span>
+      </motion.div>
     </section>
   );
 };
