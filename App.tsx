@@ -48,8 +48,7 @@ const Header = () => {
         <a href="/" className="flex items-center space-x-2">
           <img src={LOGO_URL} alt="Coresys Logo" className="h-10 w-auto" />
           <div className="flex flex-col -space-y-1">
-            <span className="text-xl font-bold text-navy tracking-tight">CORESYS</span>
-            <span className="text-[10px] uppercase tracking-[0.2em] text-primary font-semibold">By Cegid</span>
+            <span className="text-xl font-bold text-navy tracking-tight uppercase">CORESYS</span>
           </div>
         </a>
 
@@ -139,8 +138,8 @@ const Hero = () => {
             Coresys – <span className="text-primary italic">Le Futur</span> de la Gestion ERP
           </h1>
           <p className="text-lg lg:text-xl text-navy/60 mb-10 max-w-xl leading-relaxed">
-            Une solution ERP puissante et évolutive par Cegid pour piloter la performance 
-            et accélérer la transformation digitale de votre entreprise.
+            Une solution ERP puissante et évolutive pour piloter la performance 
+            et accélérer la transformation digitale de votre entreprise au Maroc.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <button className="px-8 py-4 bg-navy text-white rounded-full font-bold text-lg hover:bg-navy-light transition-all flex items-center justify-center group shadow-xl shadow-navy/20">
@@ -195,7 +194,7 @@ const ValueProps = () => {
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl lg:text-5xl font-bold text-navy mb-6">Piliers de Performance</h2>
-          <p className="text-lg text-navy/60">Une technologie de pointe pour répondre aux défis complexes de la gestion d'entreprise moderne.</p>
+          <p className="text-lg text-navy/60">Une technologie de pointe pour répondre aux défis complexes de la gestion d'entreprise moderne au Maroc.</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {VALUE_PROPS.map((prop, idx) => (
@@ -267,12 +266,12 @@ const WhyCoresys = () => {
     <section className="py-24 bg-gray-light">
       <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
         <div>
-          <h2 className="text-3xl lg:text-5xl font-bold text-navy mb-8 leading-tight">Pourquoi choisir Coresys par Cegid ?</h2>
+          <h2 className="text-3xl lg:text-5xl font-bold text-navy mb-8 leading-tight">Pourquoi choisir Coresys ?</h2>
           <div className="space-y-8">
             {[
-              { title: "Expertise Cegid", desc: "Bénéficiez de la solidité et de l'innovation du leader européen des solutions de gestion." },
-              { title: "Déploiement Agile", desc: "Réduisez vos délais de mise en œuvre grâce à nos méthodologies pré-configurées par métier." },
-              { title: "Innovation Continue", desc: "Profitez des dernières avancées en IA générative pour automatiser vos tâches quotidiennes." }
+              { title: "Expertise Métier", desc: "Bénéficiez d'une solution éprouvée, conçue pour répondre aux standards internationaux et locaux." },
+              { title: "Déploiement Agile", desc: "Réduisez vos délais de mise en œuvre grâce à nos méthodologies pré-configurées par secteur d'activité." },
+              { title: "Innovation Continue", desc: "Profitez des dernières avancées en IA générative pour automatiser vos tâches quotidiennes au Maroc." }
             ].map((item, i) => (
               <div key={i} className="flex items-start space-x-6">
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white mt-1">
@@ -289,14 +288,14 @@ const WhyCoresys = () => {
         <div className="relative">
           <div className="aspect-square bg-white rounded-[40px] shadow-2xl p-4 overflow-hidden">
              <img 
-               src="https://www.cegid.com/fr/wp-content/uploads/sites/7/2022/12/capture-cegid-xrp-flex-directeur-commercial.png" 
+               src="https://i.ibb.co/bj2gFvvT/image.png" 
                className="w-full h-full object-cover rounded-[30px]" 
-               alt="Cegid XRP Flex Pilotage Commercial"
+               alt="Pourquoi choisir Coresys"
              />
           </div>
           <div className="absolute -bottom-10 -left-10 bg-navy text-white p-8 rounded-3xl shadow-2xl max-w-xs">
-            <p className="text-3xl font-black mb-2">40+</p>
-            <p className="text-sm font-medium opacity-70">années d'expérience au service des entreprises.</p>
+            <p className="text-3xl font-black mb-2">20+</p>
+            <p className="text-sm font-medium opacity-70">années d'expertise au service du tissu économique national.</p>
           </div>
         </div>
       </div>
@@ -310,7 +309,7 @@ const Industries = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-5xl font-bold text-navy mb-6">Expertise Sectorielle</h2>
-          <p className="text-lg text-navy/60 max-w-2xl mx-auto">Coresys s'adapte à la réalité de votre métier avec des fonctionnalités verticales spécifiques.</p>
+          <p className="text-lg text-navy/60 max-w-2xl mx-auto">Coresys s'adapte à la réalité de votre métier avec des fonctionnalités verticales spécifiques au marché marocain.</p>
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
           {INDUSTRIES.map((industry) => (
@@ -341,7 +340,7 @@ const DashboardPreview = () => {
               <h2 className="text-3xl lg:text-6xl font-black text-white mb-8">Un cockpit de pilotage nouvelle génération</h2>
               <p className="text-white/60 text-lg mb-10 leading-relaxed">
                 Visualisez la santé de votre entreprise en un coup d'œil. Notre interface épurée élimine la complexité 
-                pour vous permettre de vous concentrer sur ce qui compte vraiment : la décision.
+                pour vous permettre de vous concentrer sur ce qui compte vraiment : la décision stratégique.
               </p>
               <div className="flex items-center space-x-4">
                 <button className="p-5 bg-primary rounded-full text-white shadow-xl shadow-primary/40 hover:scale-105 transition-transform">
@@ -395,7 +394,7 @@ const Testimonials = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-5xl font-bold text-navy mb-6">Ce qu'en disent nos clients</h2>
-          <p className="text-lg text-navy/60 max-w-2xl mx-auto">Découvrez comment Coresys transforme le quotidien des entreprises leaders dans leur secteur.</p>
+          <p className="text-lg text-navy/60 max-w-2xl mx-auto">Découvrez comment Coresys transforme le quotidien des leaders économiques au Maroc.</p>
         </div>
         <div className="grid lg:grid-cols-3 gap-8">
           {TESTIMONIALS.map((t, idx) => (
@@ -431,7 +430,7 @@ const Blog = () => {
         <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
           <div className="max-w-2xl">
             <h2 className="text-3xl lg:text-5xl font-bold text-navy mb-6">Actualités & Insights</h2>
-            <p className="text-lg text-navy/60">Restez à la pointe des tendances ERP, de la finance et de la transformation digitale.</p>
+            <p className="text-lg text-navy/60">Restez à la pointe des tendances ERP et de la transformation digitale au Maroc.</p>
           </div>
           <button className="text-primary font-bold flex items-center hover:underline group">
             Tout le blog <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
@@ -489,7 +488,7 @@ const FinalCTA = () => {
           </div>
           <div className="relative z-10 max-w-4xl mx-auto">
             <h2 className="text-4xl lg:text-7xl font-black text-white mb-8">Transformez votre vision en performance durable</h2>
-            <p className="text-xl text-white/70 mb-12">Nos experts sont prêts à vous accompagner dans votre projet de transformation.</p>
+            <p className="text-xl text-white/70 mb-12">Nos experts basés au Maroc sont prêts à vous accompagner dans votre projet de transformation.</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <button className="px-10 py-5 bg-primary text-white rounded-full font-bold text-xl hover:shadow-2xl hover:shadow-primary/40 transition-all">
                 Parler à un expert
@@ -514,12 +513,11 @@ const Footer = () => {
             <div className="flex items-center space-x-2 mb-8">
               <img src={LOGO_URL} alt="Coresys Logo" className="h-10 w-auto invert brightness-0" />
               <div className="flex flex-col -space-y-1">
-                <span className="text-xl font-bold tracking-tight">CORESYS</span>
-                <span className="text-[10px] uppercase tracking-[0.2em] text-primary font-semibold">By Cegid</span>
+                <span className="text-xl font-bold tracking-tight uppercase">CORESYS</span>
               </div>
             </div>
             <p className="text-white/40 leading-relaxed mb-8">
-              Coresys by Cegid est la plateforme ERP de référence pour les entreprises en quête d'innovation et de performance.
+              Coresys est la plateforme ERP de référence pour les entreprises en quête d'innovation et de performance au Maroc.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors">
@@ -547,7 +545,7 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-bold mb-8">Société</h4>
             <ul className="space-y-4 text-white/60">
-              <li><a href="#" className="hover:text-primary transition-colors">À propos de Cegid</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">À propos de Coresys</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">Carrières</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">Presse</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">Responsabilité (RSE)</a></li>
@@ -566,7 +564,7 @@ const Footer = () => {
         </div>
 
         <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-white/40 text-sm">© 2024 Coresys by Cegid. Tous droits réservés.</p>
+          <p className="text-white/40 text-sm">© 2024 Coresys ERP. Tous droits réservés.</p>
           <div className="flex space-x-8 text-sm text-white/40">
             <a href="#" className="hover:text-white transition-colors">Mentions Légales</a>
             <a href="#" className="hover:text-white transition-colors">Politique de Confidentialité</a>

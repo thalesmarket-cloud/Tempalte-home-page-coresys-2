@@ -10,10 +10,7 @@ import {
   Truck, 
   ShoppingCart, 
   Factory, 
-  Briefcase,
-  Globe,
-  Award,
-  Cpu
+  Briefcase
 } from 'lucide-react';
 import { NavItem, Feature, ValueProp, Industry, KPI, Testimonial, BlogPost } from './types';
 
@@ -56,7 +53,7 @@ export const FEATURES: Feature[] = [
   {
     id: 'finance',
     title: 'Finance & Comptabilité',
-    description: 'Maîtrisez votre rentabilité et automatisez vos processus financiers complexes.',
+    description: 'Maîtrisez votre rentabilité et automatisez vos processus financiers conformes aux normes marocaines.',
     icon: <Wallet className="w-6 h-6" />,
   },
   {
@@ -109,26 +106,26 @@ export const KPIS: KPI[] = [
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: '1',
-    name: 'Jean-Marc Dubois',
+    name: 'Ahmed Benjelloun',
     role: 'Directeur Financier',
-    company: 'Logistique France',
-    content: "L'implémentation de Coresys a radicalement changé notre vision de la rentabilité. La précision des données en temps réel est un atout majeur pour nos décisions stratégiques.",
+    company: 'Atlas Distribution Group (Casablanca)',
+    content: "L'implémentation de Coresys a transformé notre gestion multisites entre Casablanca et Agadir. La conformité fiscale marocaine est parfaitement intégrée, ce qui simplifie nos clôtures.",
     avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200',
   },
   {
     id: '2',
-    name: 'Sophie Laurent',
+    name: 'Yasmine El Mansouri',
     role: 'Responsable Supply Chain',
-    company: 'Manufacture Moderne',
-    content: "Cegid XRP Flex nous permet d'anticiper les ruptures de stock bien avant qu'elles ne surviennent. L'interface Coresys est d'une fluidité exemplaire pour nos équipes.",
+    company: 'Logistique Tanger Med',
+    content: "Pour nos activités au port de Tanger Med, Coresys offre une visibilité sans précédent sur notre chaîne logistique internationale. Un gain de temps considérable pour nos équipes.",
     avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200',
   },
   {
     id: '3',
-    name: 'Thomas Morel',
+    name: 'Omar Alami',
     role: 'CEO',
-    company: 'TechSolutions SA',
-    content: "Nous cherchions une solution capable d'accompagner notre hyper-croissance. Coresys est le seul ERP qui a su allier puissance technique et simplicité d'utilisation.",
+    company: 'Maroc Industrie SA',
+    content: "C'est l'outil indispensable pour piloter la croissance de notre industrie basée à Kénitra. Coresys allie puissance technique et simplicité, parfaitement adapté aux besoins du marché local.",
     avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200',
   }
 ];
@@ -136,21 +133,21 @@ export const TESTIMONIALS: Testimonial[] = [
 export const BLOG_POSTS: BlogPost[] = [
   {
     id: '1',
-    title: '5 étapes pour réussir sa transformation digitale en 2025',
+    title: 'Transformation digitale au Maroc : Les enjeux de 2025',
     category: 'Stratégie',
     date: '12 Fév 2025',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: '2',
-    title: 'IA Générative et ERP : Comment automatiser vos rapports financiers',
+    title: 'IA et ERP : Optimiser la gestion financière des entreprises marocaines',
     category: 'Innovation',
     date: '08 Fév 2025',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800',
   },
   {
     id: '3',
-    title: 'Guide complet : Choisir un ERP Cloud vs On-premise',
+    title: 'Cloud vs On-premise : Quelle infrastructure pour votre PME au Maroc ?',
     category: 'Guide',
     date: '05 Fév 2025',
     image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800',
