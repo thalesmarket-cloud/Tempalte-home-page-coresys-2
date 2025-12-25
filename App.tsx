@@ -1,6 +1,6 @@
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform, useInView, animate } from 'framer-motion';
 import { 
   Menu, 
   X, 
@@ -27,6 +27,28 @@ import {
 } from './constants';
 
 // --- Sub-components ---
+
+const AnimatedCounter = ({ value, duration = 2 }: { value: string, duration?: number }) => {
+  const [displayValue, setDisplayValue] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    if (isInView) {
+      const numericValue = parseInt(value, 10);
+      if (isNaN(numericValue)) return;
+
+      const controls = animate(0, numericValue, {
+        duration: duration,
+        ease: "easeOut",
+        onUpdate: (latest) => setDisplayValue(Math.floor(latest))
+      });
+      return () => controls.stop();
+    }
+  }, [isInView, value, duration]);
+
+  return <span ref={ref}>{displayValue}</span>;
+};
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -366,20 +388,26 @@ const DashboardPreview = () => {
 
 const KPIs = () => {
   return (
-    <section className="py-20 bg-primary">
+    <section className="py-20 bg-primary overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
           {KPIS.map((kpi, i) => (
             <motion.div
               key={i}
-              whileInView={{ opacity: 1, scale: 1 }}
-              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 40 }}
               viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
               className="text-center text-white"
             >
-              <p className="text-5xl lg:text-7xl font-black mb-2 tracking-tight">{kpi.value}{kpi.suffix.includes('%') ? '%' : ''}</p>
-              <p className="text-sm lg:text-base font-bold uppercase tracking-widest opacity-80">{kpi.label}</p>
-              {!kpi.suffix.includes('%') && <p className="text-xs mt-1 font-medium">{kpi.suffix}</p>}
+              <p className="text-5xl lg:text-8xl font-black mb-4 tracking-tighter flex items-center justify-center">
+                <AnimatedCounter value={kpi.value} />
+                {kpi.suffix.includes('%') ? '%' : ''}
+              </p>
+              <p className="text-sm lg:text-lg font-bold uppercase tracking-[0.15em] opacity-100 mb-1">{kpi.label}</p>
+              {!kpi.suffix.includes('%') && (
+                <p className="text-xs lg:text-sm font-medium opacity-80">{kpi.suffix}</p>
+              )}
             </motion.div>
           ))}
         </div>
