@@ -8,14 +8,13 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
             primary: '#6eafeb',
-            accent: '#ff5733',
             secondary: '#ffffff',
             navy: '#0f172a',
             'navy-light': '#1e293b',
@@ -40,7 +39,8 @@
       border: 1px solid rgba(255, 255, 255, 0.3);
     }
     .hero-gradient {
-      background: linear-gradient(90deg, #ffffff 30%, rgba(255,255,255,0.8) 50%, transparent 100%);
+      background: radial-gradient(circle at top right, rgba(110, 175, 235, 0.15), transparent),
+                  radial-gradient(circle at bottom left, rgba(15, 23, 42, 0.05), transparent);
     }
   </style>
   <script type="importmap">
