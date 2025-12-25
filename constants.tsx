@@ -91,7 +91,7 @@ export const FEATURES: Feature[] = [
 export const INDUSTRIES: Industry[] = [
   { name: 'Industrie', image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800' },
   { name: 'Distribution', image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800' },
-  { name: 'Services', image: 'https://images.unsplash.com/photo-1454165833767-027ff868148e?auto=format&fit=crop&q=80&w=800' },
+  { name: 'Services', image: 'https://i.pinimg.com/1200x/4b/f6/1f/4bf61f7bec0d6e6d35644df9f76e210e.jpg' },
   { name: 'Retail', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800' },
   { name: 'Grandes Entreprises', image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800' },
 ];
