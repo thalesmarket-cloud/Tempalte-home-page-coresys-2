@@ -17,12 +17,12 @@ import { NavItem, Feature, ValueProp, Industry, KPI, Testimonial, BlogPost } fro
 export const LOGO_URL = "https://i.ibb.co/h1d8RF88/image.png";
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: 'Produit', href: '#product' },
+  { label: 'Qui sommes-nous', href: '#about' },
   { label: 'Solutions', href: '#solutions' },
-  { label: 'Industries', href: '#industries' },
-  { label: 'Fonctionnalités', href: '#features' },
+  { label: 'Besoins', href: '#needs' },
+  { label: 'Secteurs d’activité', href: '#industries' },
+  { label: 'Compétences', href: '#skills' },
   { label: 'Ressources', href: '#resources' },
-  { label: 'Contact', href: '#contact' },
 ];
 
 export const VALUE_PROPS: ValueProp[] = [
