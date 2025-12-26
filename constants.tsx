@@ -21,7 +21,6 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Solutions', href: '#solutions' },
   { label: 'Industries', href: '#industries' },
   { label: 'Fonctionnalités', href: '#features' },
-  { label: 'Tarifs', href: '#pricing' },
   { label: 'Ressources', href: '#resources' },
   { label: 'Contact', href: '#contact' },
 ];
