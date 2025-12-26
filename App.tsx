@@ -16,7 +16,9 @@ import {
   Calendar,
   MessageCircle,
   Accessibility,
-  Send
+  Send,
+  Mail,
+  Check
 } from 'lucide-react';
 import { 
   NAV_ITEMS, 
@@ -494,6 +496,109 @@ const Blog = () => {
   );
 };
 
+const Newsletter = () => {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setStatus('loading');
+    // Simulate API call
+    setTimeout(() => {
+      setStatus('success');
+      setEmail('');
+    }, 1500);
+  };
+
+  return (
+    <section className="py-24 bg-gray-light relative overflow-hidden">
+      {/* Decorative circles */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -mr-32 -mt-32" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-navy/5 rounded-full blur-3xl -ml-48 -mb-48" />
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-4xl mx-auto bg-white rounded-[40px] shadow-2xl shadow-navy/5 p-8 lg:p-16 border border-white">
+          <div className="grid lg:grid-cols-5 gap-12 items-center">
+            <div className="lg:col-span-3">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-6">
+                  <Mail size={24} />
+                </div>
+                <h2 className="text-3xl lg:text-4xl font-black text-navy mb-4 leading-tight">
+                  Restez informé des innovations ERP
+                </h2>
+                <p className="text-lg text-navy/60">
+                  Rejoignez plus de 500 leaders d'entreprise au Maroc et recevez nos meilleurs insights stratégiques chaque mois.
+                </p>
+              </motion.div>
+            </div>
+
+            <div className="lg:col-span-2">
+              <AnimatePresence mode="wait">
+                {status === 'success' ? (
+                  <motion.div
+                    key="success"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="flex flex-col items-center text-center p-6 bg-green-50 rounded-3xl border border-green-100"
+                  >
+                    <div className="w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center mb-4 shadow-lg shadow-green-200">
+                      <Check size={32} strokeWidth={3} />
+                    </div>
+                    <h4 className="text-xl font-bold text-green-900 mb-1">C'est validé !</h4>
+                    <p className="text-green-800/70 text-sm">Vous recevrez bientôt notre prochaine édition.</p>
+                  </motion.div>
+                ) : (
+                  <motion.form
+                    key="form"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onSubmit={handleSubmit}
+                    className="space-y-4"
+                  >
+                    <div className="relative group">
+                      <input
+                        type="email"
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Votre adresse e-mail"
+                        className="w-full px-6 py-5 bg-gray-100 border-2 border-transparent rounded-2xl focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none text-navy font-medium group-hover:bg-gray-200/50"
+                      />
+                    </div>
+                    <button
+                      disabled={status === 'loading'}
+                      className="w-full py-5 bg-navy text-white rounded-2xl font-black text-lg hover:bg-navy-light transition-all shadow-xl shadow-navy/20 active:scale-[0.98] disabled:opacity-50 flex items-center justify-center gap-3"
+                    >
+                      {status === 'loading' ? (
+                        <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      ) : (
+                        <>
+                          S'abonner
+                          <Send size={20} />
+                        </>
+                      )}
+                    </button>
+                    <p className="text-[10px] text-center text-navy/40 uppercase tracking-widest font-bold">
+                      Pas de spam, désinscription possible à tout moment.
+                    </p>
+                  </motion.form>
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const FinalCTA = () => {
   return (
     <section className="py-24 bg-white">
@@ -616,6 +721,7 @@ const App: React.FC = () => {
         <FinalCTA />
         <Testimonials />
         <Blog />
+        <Newsletter />
       </main>
       <Footer />
     </div>
