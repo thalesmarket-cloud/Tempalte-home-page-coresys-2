@@ -307,7 +307,7 @@ const WhyCoresys = () => {
         <div className="relative">
           <div className="aspect-square bg-white rounded-[40px] shadow-2xl p-4 overflow-hidden">
              <img 
-               src="https://i.ibb.co/bj2gFvvT/image.png" 
+               src="https://i.postimg.cc/SxDWB7HK/Design-sans-titre(1).jpg" 
                className="w-full h-full object-cover rounded-[30px]" 
                alt="Pourquoi choisir Coresys"
              />
