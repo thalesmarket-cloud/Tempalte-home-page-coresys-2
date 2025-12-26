@@ -70,30 +70,30 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <a href="/" className="flex items-center space-x-3 shrink-0">
+        <a href="/" className="flex items-center space-x-4 shrink-0 mr-8">
           <img src={LOGO_URL} alt="Coresys Logo" className="h-10 lg:h-12 w-auto" />
           <div className="hidden sm:block">
             <span className="text-xl font-black tracking-tight uppercase text-navy">CORESYS</span>
           </div>
         </a>
 
-        {/* Desktop Menu - ml-auto added to push menu to the right and avoid logo overlap */}
-        <nav className="hidden xl:flex items-center space-x-8 ml-auto">
-          <div className="flex items-center space-x-8 mr-8 border-r border-navy/5 pr-8">
+        {/* Desktop Menu - ml-16 and ml-auto to force separation and right alignment */}
+        <nav className="hidden xl:flex items-center ml-auto">
+          <div className="flex items-center space-x-6 mr-8 border-r border-navy/10 pr-8">
             {NAV_ITEMS.map((item) => (
               <a 
                 key={item.label} 
                 href={item.href} 
-                className="text-xs font-bold text-navy/70 hover:text-primary transition-colors uppercase tracking-widest whitespace-nowrap"
+                className="text-[11px] font-bold text-navy/70 hover:text-primary transition-colors uppercase tracking-widest whitespace-nowrap"
               >
                 {item.label}
               </a>
             ))}
           </div>
           
-          <div className="flex items-center space-x-4 shrink-0">
-            <a href="#" className="text-xs font-bold text-navy/60 hover:text-navy transition-colors uppercase tracking-widest">Support</a>
-            <a href="#" className="px-6 py-2.5 bg-navy text-white hover:bg-navy-light rounded-full text-xs font-black transition-all shadow-lg shadow-navy/10 whitespace-nowrap">
+          <div className="flex items-center space-x-6 shrink-0">
+            <a href="#" className="text-[11px] font-bold text-navy/60 hover:text-navy transition-colors uppercase tracking-widest">Support</a>
+            <a href="#" className="px-6 py-2.5 bg-navy text-white hover:bg-navy-light rounded-full text-[11px] font-black transition-all shadow-lg shadow-navy/10 whitespace-nowrap">
               Demander une démo
             </a>
           </div>
