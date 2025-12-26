@@ -72,9 +72,8 @@ const Header = () => {
       <div className="container mx-auto px-6 flex items-center justify-between">
         <a href="/" className="flex items-center space-x-3 shrink-0">
           <img src={LOGO_URL} alt="Coresys Logo" className="h-10 lg:h-12 w-auto" />
-          <div className="flex flex-col -space-y-1 hidden sm:flex">
+          <div className="hidden sm:block">
             <span className="text-xl font-black tracking-tight uppercase text-navy">CORESYS</span>
-            <span className="text-[8px] tracking-widest font-bold text-navy/40">BY CEGID</span>
           </div>
         </a>
 
